@@ -162,6 +162,17 @@ class TestCounterEndpoints:
         # TODO: Add an assertion to check that 'b' is indeed in the response
 
     # ===========================
+    # Test: Retrieve bottom N highest counters when no counters exist
+    # Author: Christopher Vuong
+    # Modification: Ensure the API returns not found.
+    # ===========================
+    def test_bottom_n_counters_none(self, client):
+        """Ensures status not found when counters in empty"""
+        client.post('counters/reset')
+        response = client.get('/counters/bottom/1')
+        assert response.status_code == HTTPStatus.NOT_FOUND
+
+    # ===========================
     # Test: Set a counter to a specific value
     # Author: Student 4
     # Modification: Ensure setting a counter to the same value does nothing.
