@@ -94,3 +94,21 @@ class TestCounterEndpoints:
     
     """Test cases for Extended Counter API"""
 
+    # ===========================
+    # Test: Retrieve total count of all counters
+    # Author: Student 1
+    # Modification: Add assertion to check the total value is correct.
+    # ===========================
+    def test_get_total_counters(self, client):
+        """It should return the total sum of all counter values"""
+        client.post('/counters/test1')
+        client.post('/counters/test2')
+        client.put('/counters/test1')
+
+        response = client.get('/counters/total')
+
+        assert response.status_code == HTTPStatus.OK
+        
+        # TODO: Add an assertion to check the correct total value
+
+ 
