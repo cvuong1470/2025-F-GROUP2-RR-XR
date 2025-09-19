@@ -170,7 +170,7 @@ class TestCounterEndpoints:
         """Ensures status not found when counters in empty"""
         client.post('counters/reset')
         response = client.get('/counters/bottom/1')
-        assert response.status_code == HTTPStatus.OK
+        assert response.status_code == HTTPStatus.NOT_FOUND
 
     # ===========================
     # Test: Set a counter to a specific value
